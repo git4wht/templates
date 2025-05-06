@@ -34,7 +34,7 @@
         var templateIndex = workbook.getSheetIndex(templateSheet);
         workbook.removeSheetAt(templateIndex);
 
-        // 保存结果
+        // 結果を保存する
         try (var out = new FileOutputStream(input.printFile)) {
             workbook.write(out);
         }
