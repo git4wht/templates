@@ -1,0 +1,46 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.2.0
+                              https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+
+    <!-- 用于最终构建包的名称前缀 -->
+    <id>dist</id>
+
+    <!-- 是否附加构建产物到项目 -->
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!-- 打包格式：zip、tar.gz、dir -->
+    <formats>
+        <format>zip</format>
+    </formats>
+    <!-- 包含依赖 jar -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+    <!-- 打包额外的文件，如 README、脚本 -->
+    <fileSets>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>conf</outputDirectory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.yml</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

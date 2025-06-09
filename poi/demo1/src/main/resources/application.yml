@@ -1,0 +1,10 @@
+
+spring:
+  application:
+    name: DbChecker
+  datasource:
+    url: jdbc:postgresql://localhost:5432/yourdb
+    username: youruser
+    password: yourpassword
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
