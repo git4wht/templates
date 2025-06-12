@@ -48,7 +48,7 @@ public class ExportService {
                     // 获取所有列名，保证列顺序
                     List<String> headers = results.get(0).keySet().stream().toList();
 
-                    File outputFile = Paths.get(outputDir, "export-" + export.getName() + "-" + index + ".csv").toFile();
+                    File outputFile = Paths.get(outputDir, export.getName() + "-" + index + ".csv").toFile();
                     CsvUtil.writeToCsv(outputFile, headers, results);
                     log.info("Exported to " + outputFile.getAbsolutePath());
                 }
